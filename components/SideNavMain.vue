@@ -1,4 +1,3 @@
-import { NuxtLink } from '../.nuxt/components';
 <template>
     <div
         id="SideNavMain"
