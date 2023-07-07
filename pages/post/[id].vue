@@ -42,7 +42,7 @@ import { NuxtLink } from '../../.nuxt/components';
             />
 
             <div
-                v-if="true"
+                v-if="!isLoaded"
                 class="flex items-center justify-center bg-black bg-opacity-70 h-screen lg:min-w-[480px]"
             >
                 <Icon class="animate-spin ml-1" name="mingcute:loading-line" size="100" color="#FFFFFF" />
@@ -151,16 +151,92 @@ import { NuxtLink } from '../../.nuxt/components';
                         </NuxtLink>
                         <div class="ml-14 pt-0.5 w-full">
                             <div class="text-[18px] font-semibold flex items-center justify-between">
-                                
+                                User name
+                                <Icon 
+                                    v-if="true"
+                                    @click="$event => deleteComment()"
+                                    class="cursor-pointer"
+                                    name="material-symbols:delete-outline-sharp"
+                                    size="25"
+                                />
+                            </div>
+                            <div class="text-[15px] font-light">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                Eleifend quam adipiscing vitae proin. Consectetur libero id faucibus nisl tincidunt eget nullam. 
+                                Quam id leo in vitae turpis massa. Cursus eget nunc scelerisque viverra mauris. 
+                                Donec adipiscing tristique risus nec. Nulla facilisi morbi tempus iaculis urna.
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="mb-28"/>
+
+            </div>
+
+            <div 
+                id="CreateComment"
+                v-if="true"
+                class="absolute flex items-center justify-between bottom-0 bg-white h-[85px] lg:max-w-[550px] w-full py-5 px-8 border-t-2"
+            >
+                <div
+                    :class="inputFocused ? 'border-2 border-gray-400' : 'border-2 border-[#F1F1F2]'"
+                    class="bg-[#F1F1F2] flex items-center rounded-lg w-full lg:max-w-[420px]"
+                >
+                    <input 
+                        v-model="comment"
+                        @focus="$event => inputFocused = true"
+                        @blur="$event => inputFocused = false"
+                        class="bg-[#F1F1F2] text-[14px] focus:outline-none w-full lg:max-w-[420px] p-2 rounded-lg"
+                        type="text"
+                        placeholder="Add comment..."
+                    >
+                </div>
+                <button
+                    :disabled="!comment"
+                    @click="$event => addComment()"
+                    :class="comment ? 'text-[#F02C56] cursor-pointer' : 'text-gray-400'"
+                    class="font-semibold text-sm ml-5 pr-1"
+                >
+                    Post
+                </button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+const route = useRoute();
+const router = useRouter();
+
+let video = ref(null);
+let isLoaded = ref(false);
+let comment = ref(null);
+let inputFocused = ref(false);
+
+onMounted(() => {
+    isLoaded.value = true;
+    video.value.play();
+    // video.value.addEventListener('loadeddata', (e) => {
+    //     if (e.target) {
+    //         setTimeout(() => {
+    //             isLoaded.value = true
+    //         }, 500)
+    //     }
+    // });
+});
+
+onBeforeUnmount(() => {
+    video.value.pause();
+    video.value.currentTime = 0;
+    video.value.src = '';
+});
+
+watch(() => isLoaded.value, () => {
+    if (isLoaded.value) {
+        setTimeout(() => video.value.play(), 500);
+    }
+});
 
 </script>
