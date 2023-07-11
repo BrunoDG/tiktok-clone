@@ -13,73 +13,75 @@
                     <div class="text-[18px] truncate">User name</div>
                     <button
                         v-if="true"
-                        class="flex item-center rounded-md py-1.5 px-3.5 mt-3 text-[15px] font-semibold border hover:bg-gray-100"
-                    >
-                        <Icon class="mt-0.5 mr-1" name="mdi:pencil" size="18" />
-                        <div>Edit profile</div>
-                    </button>
-                    <button
-                        v-else
-                        class="flex item-center rounded-md py-1.5 px-8 mt-3 text-[15px] text-white font-semibold bg-[#F02C56]"
-                    >
-                        Follow
-                    </button>
+                                    @click="$event => $generalStore.isEditProfileOpen = true"
+                            class="flex item-center rounded-md py-1.5 px-3.5 mt-3 text-[15px] font-semibold border hover:bg-gray-100"
+                        >
+                            <Icon class="mt-0.5 mr-1" name="mdi:pencil" size="18" />
+                            <div>Edit profile</div>
+                        </button>
+                        <button
+                            v-else
+                            class="flex item-center rounded-md py-1.5 px-8 mt-3 text-[15px] text-white font-semibold bg-[#F02C56]"
+                        >
+                            Follow
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="flex items-center pt-4">
-                <div class="mr-4">
-                    <span class="font-bold">10K</span>
-                    <span class="text-gray-500 font-light text-[15px] pl-1.5">Following</span>
+                <div class="flex items-center pt-4">
+                    <div class="mr-4">
+                        <span class="font-bold">10K</span>
+                        <span class="text-gray-500 font-light text-[15px] pl-1.5">Following</span>
+                    </div>
+                    <div class="mr-4">
+                        <span class="font-bold">40K</span>
+                        <span class="text-gray-500 font-light text-[15px] pl-1.5">Followers</span>
+                    </div>
+                    <div class="mr-4">
+                        <span class="font-bold">5K</span>
+                        <span class="text-gray-500 font-light text-[15px] pl-1.5">Likes</span>
+                    </div>
                 </div>
-                <div class="mr-4">
-                    <span class="font-bold">40K</span>
-                    <span class="text-gray-500 font-light text-[15px] pl-1.5">Followers</span>
+
+                <div class="pt-4 mr-4 text-gray-500 font-light text-[15px] pl-1.5 max-w-[500px]">
+                    This is the bio section
                 </div>
-                <div class="mr-4">
-                    <span class="font-bold">5K</span>
-                    <span class="text-gray-500 font-light text-[15px] pl-1.5">Likes</span>
+
+                <div class="w-full flex items-center pt-4 border-b">
+                    <div class="w-60 text-center py-2 text-[17px] font-semibold border-b-2 border-b-black">Videos</div>
+                    <div class="w-60 text-center py-2 text-[17px] font-semibold text-gray-500">
+                        <Icon name="material-symbols:lock-open" class="mb-0.5" /> Liked
+                    </div>
                 </div>
-            </div>
 
-            <div class="pt-4 mr-4 text-gray-500 font-light text-[15px] pl-1.5 max-w-[500px]">
-                This is the bio section
-            </div>
-
-            <div class="w-full flex items-center pt-4 border-b">
-                <div class="w-60 text-center py-2 text-[17px] font-semibold border-b-2 border-b-black">Videos</div>
-                <div class="w-60 text-center py-2 text-[17px] font-semibold text-gray-500">
-                    <Icon name="material-symbols:lock-open" class="mb-0.5" /> Liked
+                <div class="mt-4 grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
+                    <PostUser />
                 </div>
-            </div>
 
-            <div class="mt-4 grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
-                <PostUser />
             </div>
-
-        </div>
-    </MainLayout>
+        </MainLayout>
 </template>
 
 <script setup>
-    import MainLayout from '~/layouts/MainLayout.vue';
+import MainLayout from '~/layouts/MainLayout.vue';
+const { $generalStore } = useNuxtApp();
 </script>
